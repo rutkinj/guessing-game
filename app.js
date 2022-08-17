@@ -5,88 +5,117 @@ console.log(userName);
 let welcomeMsg = 'Hello, ' + userName + '! Welcome to my page. Now you have to take a MeQuiz!';
 alert(welcomeMsg);
 
-let q1 = 'Am I pretty tall?';
-let q2 = 'Am I currently learning HTML, CSS, and JS?';
-let q3 = 'Am I a picky eater?';
-let q4 = 'Do I wear glasses?';
-let q5 = 'Am I a cool guy?';
-let yesOrNo = ' y/n ';
-let answer ='';
+let correctAnswers = 0;
 
-//question 1
-answer = prompt(q1 + yesOrNo);
-if (typeof(answer) === 'string'){
-  answer = answer.toLowerCase();
+/////////////// MAIN QUIZ /////////////////
+
+let questions = ['Am I pretty tall?',
+  'Am I currently learning HTML, CSS, and JS?',
+  'Am I a picky eater?',
+  'Do I wear glasses?',
+  'Am I a cool guy?',];
+
+let answers = ['y', 'y', 'n', 'y', 'y',];
+
+for (let i = 0; i < questions.length; i++){
+
+  let response = prompt(questions[i] + ' y/n');
+
+  if (typeof(response) === 'string'){
+    response = response.toLowerCase();
+
+    if (response === answers[i]){
+      alert('u got it!');
+      correctAnswers++;
+    } else {
+      alert('u wrong!');
+    }
+  }
 }
 
-if (answer === 'y'){
-  alert('You got it!');
-  console.log('You got it!');
-} else if (answer === 'n'){
-  console.log('wrong');
-} else {
-  console.log('User is not following directions...');
+//////////////// NUMBER GUESSER /////////////////
+
+let numGuessMessage = 'Guess a number between 1 and 10';
+let targetNum = (Math.floor(Math.random() * 10) + 1).toString();
+console.log(targetNum);
+let numGuesses = 4;
+let guessedRight = false;
+
+while (numGuesses > 0){
+  let guess = prompt(numGuessMessage);
+  console.log(typeof(guess));
+  if (guess < targetNum){
+    alert('Nope, too low.');
+    numGuesses--;
+  } else if (guess > targetNum){
+    alert('Nope, too high.');
+    numGuesses--;
+  } else if (guess === targetNum){
+    alert('you got it! It was ' + targetNum);
+    guessedRight = true;
+    correctAnswers++;
+    break;
+  } else {
+    alert('Hmm, I\'m not sure that was a number...');
+  }
+}
+if (guessedRight === false){
+  alert('You\'re out of guesses! The correct number was ' + targetNum);
 }
 
-//question 2
-answer = prompt(q2 + yesOrNo);
-if (typeof (answer) === 'string') {
-  answer = answer.toLowerCase();
+//////////// MULTI ANSWER ///////////////////
+
+let favFoods = [
+  'pizza',
+  'cheeseburgers',
+  'pasta',
+  'cheese',
+  'kale',
+  'rice',
+  'breakfast cereal',
+  'butter',
+  'ice cream',
+  'potato chips',
+  'broccoli',
+  'pears',
+  'peaches',
+  'cherries',
+  'lentils'
+];
+
+let numFoodGuesses = 6;
+let foodGuessMessage = 'Guess one of my favorite foods. I\'ve got lots!';
+let isGuessing = true;
+
+while (numFoodGuesses > 0 && isGuessing){
+  let response = prompt(foodGuessMessage);
+  if (typeof(response) === 'string'){
+    response = response.toLowerCase();
+    console.log(response);
+  }
+  for (let food of favFoods) {
+    if (food === response){
+      alert('You got one! ' + food + ' is one of my favorite foods!');
+      correctAnswers++;
+      isGuessing = false;
+      break;
+    }
+  }
+  if (!isGuessing){
+    break;
+  }
+  alert('Nah, I like that, but, not a favorite...');
+  numFoodGuesses--;
+}
+if (numFoodGuesses <= 0){
+  alert('You ran out of guesses!');
 }
 
-if (answer === 'y') {
-  alert('You got it!');
-  console.log('You got it!');
-} else if (answer === 'n') {
-  console.log('wrong');
-} else {
-  console.log('User is not following directions...');
+let favFoodsAsString = '';
+
+for (let food of favFoods){
+  food += ', ';
+  favFoodsAsString += food;
 }
-
-//question 3
-answer = prompt(q3 + yesOrNo);
-if (typeof (answer) === 'string') {
-  answer = answer.toLowerCase();
-}
-
-if (answer === 'y') {
-  console.log('wrong');
-} else if (answer === 'n') {
-  alert('That\'s right!');
-  console.log('That\'s right!');
-} else {
-  console.log('User is not following directions...');
-}
-
-//question 4
-answer = prompt(q4 + yesOrNo);
-if (typeof (answer) === 'string') {
-  answer = answer.toLowerCase();
-}
-
-if (answer === 'y') {
-  alert('Wow! You got it!');
-  console.log('right');
-} else if (answer === 'n') {
-  console.log('wrong');
-} else {
-  console.log('User is not following directions...');
-}
-
-//question 5
-answer = prompt(q5 + yesOrNo);
-if (typeof (answer) === 'string') {
-  answer = answer.toLowerCase();
-}
-
-if (answer === 'y') {
-  alert('Hey, thanks!!');
-  console.log('Hey, thanks!!');
-} else if (answer === 'n') {
-  alert('Well, that\'s a matter of opinion.');
-  console.log('Well, that\'s a matter of opinion.');
-} else {
-  console.log('I\'ll just assume you think I\'m cool');
-}
-
-
+alert('Here are all my favorites: ' + favFoodsAsString +'but I\'m sure there\'s more, really.');
+alert('All right, you made it to the end, wow, impressive! Here is your final score: ' + correctAnswers + '/7! You tried!');
