@@ -1,3 +1,40 @@
 body{
-  background-color: lightpink;
+  background-color: #E8F0FF;
+  color: #392759;
+}
+.temp{
+  color: red;
+}
+
+h1{
+  text-align: center;
+  color: aliceblue;
+  background-color: #392759;
+  display: inline-flex;
+  padding: 15px;
+  border-radius: 100px;
+  border-width: 10px;
+  border-style: double;
+  border-color: #6874E8;
+}
+
+main{
+  background-color: #E8F0FF;
+  padding: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 20px;
+  border-radius: 100px;
+  border-width: 10px;
+  border-style: double;
+  border-color: #6874E8;
+}
+
+p{
+  margin: 20px;
+}
+
+footer{
+  background-color: aliceblue;
+  height: 50px;
 }
