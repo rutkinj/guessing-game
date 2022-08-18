@@ -1,5 +1,7 @@
 'use strict'; //require strict syntax
 
+///////////// HELLO WORLD /////////////////
+
 let userName = prompt('Hi, what\'s your name?');
 console.log(userName);
 let welcomeMsg = 'Hello, ' + userName + '! Welcome to my page. Now you have to take a MeQuiz!';
@@ -36,13 +38,13 @@ for (let i = 0; i < questions.length; i++){
 //////////////// NUMBER GUESSER /////////////////
 
 let numGuessMessage = 'Guess a number between 1 and 10';
-let targetNum = (Math.floor(Math.random() * 10) + 1).toString();
+let targetNum = (Math.floor(Math.random() * 10) + 1);
 console.log(targetNum);
 let numGuesses = 4;
 let guessedRight = false;
 
 while (numGuesses > 0){
-  let guess = prompt(numGuessMessage);
+  let guess = parseInt(prompt(numGuessMessage));
   console.log(typeof(guess));
   if (guess < targetNum){
     alert('Nope, too low.');
