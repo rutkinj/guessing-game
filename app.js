@@ -23,8 +23,7 @@ for (let i = 0; i < questions.length; i++){
 
   let response = prompt(questions[i] + ' y/n');
 
-  if (typeof(response) === 'string'){
-    response = response.toLowerCase();
+    convertString(response);{
 
     if (response === answers[i]){
       alert('u got it!');
@@ -33,6 +32,12 @@ for (let i = 0; i < questions.length; i++){
       alert('u wrong!');
     }
   }
+}
+
+function convertString(string) {
+   if (typeof(string) === 'string')
+    string = string.toLowerCase();
+    return string;
 }
 
 //////////////// NUMBER GUESSER /////////////////
@@ -91,10 +96,8 @@ let isGuessing = true;
 
 while (numFoodGuesses > 0 && isGuessing){
   let response = prompt(foodGuessMessage);
-  if (typeof(response) === 'string'){
-    response = response.toLowerCase();
-    console.log(response);
-  }
+  convertString(response);
+ 
   for (let food of favFoods) {
     if (food === response){
       alert('You got one! ' + food + ' is one of my favorite foods!');
@@ -113,11 +116,17 @@ if (numFoodGuesses <= 0){
   alert('You ran out of guesses!');
 }
 
-let favFoodsAsString = '';
-
-for (let food of favFoods){
-  food += ', ';
-  favFoodsAsString += food;
+alert(favFoodAsString(favFoods));
+function favFoodAsString(favFoods){
+  let favFoodsAsString = '';
+  
+  for (let i=0; i <favFoods.length; i++) {  
+     let food = favFoods[i];
+     food += ', ';  
+     favFoodsAsString += food;
+     
+  }
+    return ('Here are all my favorites: ' + favFoodsAsString +'but I\'m sure there\'s more, really.');
 }
-alert('Here are all my favorites: ' + favFoodsAsString +'but I\'m sure there\'s more, really.');
+
 alert('All right, you made it to the end, wow, impressive! Here is your final score: ' + correctAnswers + '/7! You tried!');
