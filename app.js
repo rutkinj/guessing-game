@@ -3,7 +3,6 @@
 ///////////// HELLO WORLD /////////////////
 
 let userName = prompt('Hi, what\'s your name?');
-console.log(userName);
 let welcomeMsg = 'Hello, ' + userName + '! Welcome to my page. Now you have to take a MeQuiz!';
 alert(welcomeMsg);
 
@@ -21,15 +20,15 @@ let answers = ['y', 'y', 'n', 'y', 'y',];
 
 for (let i = 0; i < questions.length; i++){
 
-  let response = prompt(questions[i] + ' y/n');
+  let response = prompt(questions[i] + '\ny / n');
 
   convertString(response);{
 
     if (response === answers[i]){
-      alert('u got it!');
+      alert('You got it!');
       correctAnswers++;
     } else {
-      alert('u wrong!');
+      alert('That is incorrect.');
     }
   }
 }
@@ -37,15 +36,13 @@ for (let i = 0; i < questions.length; i++){
 
 //////////////// NUMBER GUESSER /////////////////
 
-let numGuessMessage = 'Guess a number between 1 and 10';
+let numGuessMessage = 'Guess a number between 1 and 10.';
 let targetNum = (Math.floor(Math.random() * 10) + 1);
-console.log(targetNum);
 let numGuesses = 4;
 let guessedRight = false;
 
 while (numGuesses > 0){
   let guess = parseInt(prompt(numGuessMessage));
-  console.log(typeof(guess));
   if (guess < targetNum){
     alert('Nope, too low.');
     numGuesses--;
@@ -53,7 +50,7 @@ while (numGuesses > 0){
     alert('Nope, too high.');
     numGuesses--;
   } else if (guess === targetNum){
-    alert('you got it! It was ' + targetNum);
+    alert('You got it! It was ' + targetNum);
     guessedRight = true;
     correctAnswers++;
     break;
@@ -62,7 +59,7 @@ while (numGuesses > 0){
   }
 }
 if (guessedRight === false){
-  alert('You\'re out of guesses! The correct number was ' + targetNum);
+  alert('You\'re out of guesses! The correct number was ' + targetNum + '.');
 }
 
 //////////// MULTI ANSWER ///////////////////
@@ -112,7 +109,7 @@ if (numFoodGuesses <= 0){
 }
 
 alert(favFoodAsString(favFoods));
-alert('All right, you made it to the end, wow, impressive! Here is your final score: ' + correctAnswers + '/7! You tried!');
+alert('Alright, you made it to the end, wow, impressive! Here is your final score: ' + correctAnswers + '/7! You tried!');
 
 ////////// FUNCTIONS ////////////
 
@@ -126,11 +123,11 @@ function convertString(string) {
 function favFoodAsString(favFoods){
   let favFoodsAsString = '';
 
-  for (let i=0; i <favFoods.length; i++) {  
+  for (let i=0; i <favFoods.length; i++) {
     let food = favFoods[i];
-    food += ', ';  
+    food += ', ';
     favFoodsAsString += food;
   }
-  return ('Here are all my favorites: ' + favFoodsAsString +'but I\'m sure there\'s more, really.');
+  return ('Here are all my favorites: ' + favFoodsAsString +'but, I\'m sure there\'s more, really.');
 }
 
